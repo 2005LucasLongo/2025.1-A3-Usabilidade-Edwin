@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Dashboard Mobile</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Reset Mobile */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      color: #fff;
+      line-height: 1.4;
+      padding: 1rem;
+    }
+
+    .card {
+      background-color: #111;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    /* Métricas Mobile */
+    .metrics-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: #1a1a1a;
+      border-radius: 0.8rem;
+    }
+
+    .metric-label {
+      color: #888;
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .metric-value {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-left: 1rem;
+    }
+
+    /* Gráfico Mobile */
+    .chart-container {
+      position: relative;
+      height: 250px;
+      background-color: #1a1a1a;
+      border-radius: 0.8rem;
+      padding: 1rem;
+    }
+
+    /* Media Queries para Telas Maiores */
+    @media (min-width: 768px) {
+      .card {
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .metric-item {
+        padding: 1.2rem;
+      }
+
+      .metric-label {
+        font-size: 1rem;
+      }
+
+      .metric-value {
+        font-size: 1.5rem;
+      }
+
+      .chart-container {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>DASHBOARD ADMINISTRATIVO</h1>
+    
+    <div class="metrics-container">
+      <div class="metric-item">
+        <span class="metric-label">Entregas em Andamento</span>
+        <span class="metric-value">16</span>
+      </div>
+      
+      <div class="metric-item">
+        <span class="metric-label">Entregas Hoje</span>
+        <span class="metric-value">5</span>
+      </div>
+      
+      <div class="metric-item">
+        <span class="metric-label">Caminhões Manutenção</span>
+        <span class="metric-value">2</span>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="mobileChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Configuração do gráfico decorativo
+    const ctx = document.getElementById('mobileChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'],
+        datasets: [{
+          data: [35, 80, 60, 120, 90, 150, 80, 110, 95, 130],
+          borderColor: '#4a8cff',
+          borderWidth: 2,
+          fill: true,
+          backgroundColor: context => {
+            const ctx = context.chart.ctx;
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(74, 140, 255, 0.15)');
+            gradient.addColorStop(1, 'rgba(74, 140, 255, 0)');
+            return gradient;
+          },
+          tension: 0.4,
+          pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false }
+        },
+        scales: {
+          y: {
+            display: false,
+            beginAtZero: true
+          },
+          x: {
+            grid: { color: '#222' },
+            ticks: {
+              color: '#888',
+              font: { size: 12 }
+            }
+          }
+        },
+        elements: {
+          line: { borderWidth: 2 },
+          point: { hoverRadius: 0 }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

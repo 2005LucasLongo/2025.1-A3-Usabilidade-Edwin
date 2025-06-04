@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Monitoramento</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    /* Base Mobile */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      padding: 1rem;
+      min-height: 100vh;
+    }
+    .card {
+      background-color: #111;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .card h1 {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    .subtitle {
+      display: block;
+      font-size: 1rem;
+      color: #888;
+      margin-top: 0.5rem;
+    }
+    .grid-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .clickable-card {
+      background-color: #222;
+      padding: 1.2rem;
+      border-radius: 0.5rem;
+      position: relative;
+      min-height: 90px;
+    }
+    .clickable-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: #4a8cff;
+    }
+    .clickable-card p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .clickable-card i {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+    }
+    .map-placeholder {
+      background-color: #222;
+      border-radius: 0.5rem;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .update-btn {
+      width: 100%;
+      padding: 1rem;
+      background-color: #4a8cff;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .clickable-card {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  .clickable-card h2 {
+    color: #4a8cff !important;
+    text-decoration: none !important;
+  }
+
+  .clickable-card:hover h2 {
+    color: #3b7dde !important;
+  }
+
+  .clickable-card i {
+    color: #888 !important;
+    transition: color 0.3s;
+  }
+
+  .clickable-card:hover i {
+    color: #fff !important;
+  }
+
+  .bi-exclamation-triangle {
+    color: #ff4444 !important;
+  }
+
+  .clickable-card:hover .bi-exclamation-triangle {
+    color: #ff6666 !important;
+  }
+
+    /* Media Queries para Desktop */
+    @media (min-width: 768px) {
+      body {
+        padding: 2rem;
+      }
+      .card {
+        padding: 2rem;
+        max-width: 800px;
+      }
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        gap: 2rem;
+      }
+      .clickable-card {
+        padding: 1.5rem;
+        min-height: 120px;
+      }
+      .update-btn {
+        width: auto;
+        padding: 0.75rem 2rem;
+        float: right;
+      }
+    }
+
+    /* Estados Interativos */
+    .clickable-card {
+      transition: transform 0.2s, background-color 0.3s;
+      cursor: pointer;
+    }
+    .clickable-card:active {
+      transform: scale(0.98);
+    }
+    .clickable-card:hover {
+      background-color: #2a2a2a;
+    }
+    .update-btn {
+      transition: background-color 0.3s;
+    }
+    .update-btn:active {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>MONITORAMENTO EM TEMPO REAL</h1>
+    
+    <div class="grid-container">
+      <a href="#" class="clickable-card">
+        <h2>Status das entregas</h2>
+        <p>Verifique o status atual de todas as entregas</p>
+        <i class="bi bi-chevron-right"></i>
+      </a>
+      
+      <a href="#" class="clickable-card">
+        <h2>Alertas</h2>
+        <p>Visualizar alertas e notificações</p>
+        <i class="bi bi-exclamation-triangle"></i>
+      </a>
+    </div>
+
+    <div class="map-placeholder">
+      <i class="bi bi-map" style="font-size: 2rem; color: #444"></i>
+    </div>
+
+    <button class="update-btn">Atualizar</button>
+  </div>
+</body>
+</html>
